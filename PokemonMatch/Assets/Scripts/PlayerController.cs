@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
             if (hitObject.collider != null)
             {
                 Debug.Log("The user clicked on " + hitObject.collider.name);
+                // Destroy(hitObject.collider.gameObject);
             }
             else
             {
