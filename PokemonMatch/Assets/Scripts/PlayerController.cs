@@ -14,17 +14,16 @@ public class PlayerController : MonoBehaviour
             Vector2 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             // Raycast from the camera and store the output in hitObject.
-            RaycastHit2D hitObject = Physics2D.Raycast(worldPos, Vector2.zero);
+            RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero);
 
             // Log a message if an object was hit or not.
-            if (hitObject.collider != null)
+            if (hit.collider != null)
             {
-                Debug.Log("The user clicked on " + hitObject.collider.name);
-                // Destroy(hitObject.collider.gameObject);
-            }
-            else
-            {
-                Debug.Log("The user clicked on nothing.");
+                if (hit.collider.tag == "Pokeball")
+                {
+                    Pokeball pokeball = hit.collider.GetComponent<Pokeball>();
+                    pokeball.Show();
+                }
             }
         }
     }
